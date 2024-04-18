@@ -1,0 +1,53 @@
+<!-- livros.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+</head>
+<body>
+    <h1>Biblioteca</h1>
+    <form action="/pesquisar" method="get">
+        <input type="text" name="titulo" placeholder="Título">
+        <input type="text" name="autor" placeholder="Autor">
+        <input type="text" name="genero" placeholder="Gênero">
+        <button type="submit">Pesquisar</button>
+    </form>
+    <table border="1">
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Ações</th>
+        </tr>
+        {% for livro in livros %}
+        <tr>
+            <td>{{ livro[1] }}</td>
+            <td>{{ livro[2] }}</td>
+            <td>{{ livro[3] }}</td>
+            <td>
+                <form action="/remover-livro" method="post">
+                    <input type="hidden" name="id" value="{{ livro[0] }}">
+                    <button type="submit">Remover</button>
+                </form>
+                <form action="/editar-livro" method="post">
+                    <input type="hidden" name="id" value="{{ livro[0] }}">
+                    <input type="text" name="titulo" placeholder="Novo Título">
+                    <input type="text" name="autor" placeholder="Novo Autor">
+                    <input type="text" name="genero" placeholder="Novo Gênero">
+                    <button type="submit">Editar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Adicionar Livro</h2>
+    <form action="/adicionar-livro" method="post">
+        <input type="text" name="titulo" placeholder="Título">
+        <input type="text" name="autor" placeholder="Autor">
+        <input type="text" name="genero" placeholder="Gênero">
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>
