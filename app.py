@@ -5,7 +5,7 @@ class Livro:
     def __init__(self, titulo: str, autor: str, genero: str):
         self.titulo = titulo
         self.autor = autor
-        self.genero = genero
+        self.genero = gener
 
 class Biblioteca:
     def __init__(self):
